@@ -2,6 +2,7 @@ import { Controller } from 'zigbee-herdsman';
 import { findByDevice } from 'zigbee-herdsman-converters';
 import { Logger } from 'homebridge';
 import Device from 'zigbee-herdsman/dist/controller/model/device';
+import Endpoint from 'zigbee-herdsman/dist/controller/model/endpoint';
 import { ZigBeeControllerConfig, ZigBeeDefinition, ZigBeeEntity } from './types';
 import Group from 'zigbee-herdsman/dist/controller/model/group';
 import { CoordinatorVersion, StartResult } from 'zigbee-herdsman/dist/adapter/tstype';
@@ -148,11 +149,11 @@ export class ZigBeeController {
     return this.herdsman.getDeviceByIeeeAddr(ieeeAddr);
   }
 
-  endpoints(addr) {
+  endpoints(addr): Endpoint[] {
     return this.device(addr).endpoints.map((endpoint) => this.find(addr, endpoint));
   }
 
-  find(addr, epId) {
+  find(addr, epId): Endpoint {
     return this.herdsman.getDeviceByIeeeAddr(addr).getEndpoint(epId);
   }
 
