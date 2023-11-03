@@ -34,6 +34,14 @@ Once you get it, run yarn command:
 
 You should end up with a new `dist/` folder containing the compiled version of the plugin.
 
+## Build and run in homebridge docker
+npm install --global yarn
+cd /home/homebridge
+git clone https://github.com/suphammer/homebridge-zigbee-nt
+cd homebridge-zigbee-nt
+ln -s $(pwd) /var/lib/homebridge/node_modules/
+npm install && npm run build && npm link
+
 ## WEB UI
 
 From version 1.0.8 you can see which device is paired through the [WEB UI exposed on port 9000](http://homebridge.local:9000).
