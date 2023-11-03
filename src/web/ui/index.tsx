@@ -15,7 +15,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <Pane display="flex" height="100%">
+    <Pane style={{ display: 'flex', height: '100%' }}>
       <QueryClientProvider client={queryClient}>
         <Router>
           <Pane padding={sizes.padding.large}>
